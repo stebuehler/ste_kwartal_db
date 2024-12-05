@@ -10,17 +10,17 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const sheetId = "1Gcgk1X0ABrb0GWensKUDcENRCXyKst6sy_Vszu148Ew"
-      const apiKey = "AIzaSyCyvA99jVdHHn4rScgvnW1ADJ_b1h08SOc"
-      const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1?key=${apiKey}`;
+      const apiKey = "YOUR API KEY"
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Data?key=${apiKey}`;
 
       try {
         const response = await axios.get(url);
         const rows = response.data.values;
         const formattedData = rows.slice(1).map((row) => ({
-          id: row[0],
-          title: row[1],
-          description: row[2],
-          image: row[3],
+          id: row[2],
+          title: row[3],
+          description: row[9],
+          image: row[3] || "https://via.placeholder.com/200x150", // Use a placeholder if no image URL
           category: row[4],
         }));
         setItems(formattedData);

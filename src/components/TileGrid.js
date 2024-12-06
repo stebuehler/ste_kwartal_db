@@ -1,6 +1,7 @@
 // src/components/TileGrid.js
 import React from 'react';
 import Tile from './Tile';
+import './TileGrid.css';
 
 function TileGrid({ items }) {
   return (
@@ -9,8 +10,8 @@ function TileGrid({ items }) {
         <Tile
           key={item.id}
           image={item.image}
-          title={item.title}
-          description={item.description}
+          title={item.Name}
+          description={item.Verlag}
         />
       ))}
     </div>

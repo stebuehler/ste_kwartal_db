@@ -1,52 +1,55 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import Papa from "papaparse";
 import './App.css';
 import TileGrid from './components/TileGrid'; // Import your TileGrid component
 import FilterBar from './components/FilterBar'; // Import your FilterBar component
 
 function App() {
   const [items, setItems] = useState([]);
+  const [filters, setFilters] = useState({
+    Name: "All",
+    Verlag: "All",
+    Thema: "All",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
-      const sheetId = "1Gcgk1X0ABrb0GWensKUDcENRCXyKst6sy_Vszu148Ew"
-      const apiKey = "YOUR API KEY"
-      const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Data?key=${apiKey}`;
+      const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQV4edTfdxXQhdSSgBDLxCqYXdvEdqebS7p3HM_41FvGvES-Z3U_LwkPAifWCQvNNkW3V-bJQmEiLXl/pub?gid=0&single=true&output=csv";
 
       try {
-        const response = await axios.get(url);
-        const rows = response.data.values;
-        const formattedData = rows.slice(1).map((row) => ({
-          id: row[2],
-          title: row[3],
-          description: row[9],
-          image: row[3] || "https://via.placeholder.com/200x150", // Use a placeholder if no image URL
-          category: row[4],
-        }));
-        setItems(formattedData);
+        const response = await fetch(csvUrl);
+        const csvData = await response.text();
+
+        // Parse CSV with PapaParse
+        const result = Papa.parse(csvData, {
+        header: true, // Use the first row as column headers
+        skipEmptyLines: true, // Skip empty rows
+      });
+        
+        // Filter out rows where "Nummer" is blank
+      const filteredData = result.data.filter((row) => row["Nummer"] && row["Nummer"].length > 0);
+
+        setItems(filteredData);
       } catch (error) {
-        console.error("Error fetching data from Google Sheets:", error);
+        console.error("Error fetching or parsing CSV data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, []);  
   
-  const [activeFilter, setActiveFilter] = useState('All'); // State for the active filter
-
-  const filters = ['All', 'Category 1', 'Category 2', 'Category 3']; // Define your filter categories
-  const filteredItems = activeFilter === 'All'
-    ? items
-    : items.filter((item) => item.category === activeFilter); // Filter items based on the active filter
+  const filteredItems = items.filter((item) => {
+    return (
+      (filters.Name === "All" || item.Name === filters.Name) &&
+      (filters.Verlag === "All" || item.Verlag === filters.Verlag) &&
+      (filters.Thema === "All" || item.Thema === filters.Thema)
+    );
+  });
 
   return (
-    <div className="App">
-      <FilterBar
-        filters={filters}
-        activeFilter={activeFilter}
-        onFilterChange={setActiveFilter} // Pass the function to change the active filter
-      />
-      <TileGrid items={filteredItems} /> {/* Pass the filtered items to the TileGrid */}
+    <div>
+      <FilterBar data={items} filters={filters} setFilters={setFilters} />
+      <TileGrid items={filteredItems} />
     </div>
   );
 }

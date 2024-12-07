@@ -10,8 +10,12 @@ function TileGrid({ items }) {
         <Tile
           key={item.id}
           image={item.image}
-          title={item.Name}
-          description={item.Verlag}
+          name={item.Name}
+          verlag={item.Verlag}
+          thema={item.Thema}
+          beschreibung={item.Beschreibung}
+          anzahl_karten={item.Anzahl_Karten}
+          anzahl_werte={item.Anzahl_Kategorien_Spielbar}
         />
       ))}
     </div>

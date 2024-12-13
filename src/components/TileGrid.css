@@ -1,6 +1,6 @@
 .tile-grid {
   display: grid; /* Use CSS Grid */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
   gap: 20px; /* Space between tiles */
   padding: 20px; /* Add padding around the grid */
   justify-content: center; /* Center content */

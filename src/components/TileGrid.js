@@ -3,13 +3,15 @@ import React from 'react';
 import Tile from './Tile';
 import './TileGrid.css';
 
+const defaultImage = "https://via.placeholder.com/200x150"
+
 function TileGrid({ items }) {
   return (
     <div className="tile-grid">
       {items.map((item) => (
         <Tile
           key={item.id}
-          image={item.image}
+          image={item.image || defaultImage}
           name={item.Name}
           verlag={item.Verlag}
           thema={item.Thema}

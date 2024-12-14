@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ste_kwartal_db/static/css/main.37100e3e.css",
-    "main.js": "/ste_kwartal_db/static/js/main.cd48f19b.js",
+    "main.js": "/ste_kwartal_db/static/js/main.f83f75ed.js",
     "static/js/488.0b6e82a8.chunk.js": "/ste_kwartal_db/static/js/488.0b6e82a8.chunk.js",
     "index.html": "/ste_kwartal_db/index.html",
     "main.37100e3e.css.map": "/ste_kwartal_db/static/css/main.37100e3e.css.map",
-    "main.cd48f19b.js.map": "/ste_kwartal_db/static/js/main.cd48f19b.js.map",
+    "main.f83f75ed.js.map": "/ste_kwartal_db/static/js/main.f83f75ed.js.map",
     "488.0b6e82a8.chunk.js.map": "/ste_kwartal_db/static/js/488.0b6e82a8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.37100e3e.css",
-    "static/js/main.cd48f19b.js"
+    "static/js/main.f83f75ed.js"
   ]
 }

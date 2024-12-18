@@ -19,6 +19,7 @@ function TileGrid({ items }) {
           anzahl_karten={item.Anzahl_Karten}
           anzahl_werte={item.Anzahl_Kategorien_Spielbar}
           baujahr={item.Baujahr}
+          id={item.id}
         />
       ))}
     </div>

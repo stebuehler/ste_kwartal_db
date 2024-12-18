@@ -2,7 +2,7 @@
 import React from 'react';
 import './Tile.css'; // For styling
 
-function Tile({ image, name, verlag, thema, beschreibung, anzahl_karten, anzahl_werte, baujahr }) {
+function Tile({ image, name, verlag, thema, beschreibung, anzahl_karten, anzahl_werte, baujahr, id }) {
   return (
     <div className="tile">
       <img src={image} alt={name} className="tile-image" />
@@ -11,7 +11,8 @@ function Tile({ image, name, verlag, thema, beschreibung, anzahl_karten, anzahl_
         <p>{verlag}<br />
         {baujahr}</p>
         <p>Thema: {thema}<br />
-        {anzahl_karten} Karten, {anzahl_werte} Werte</p>
+        {anzahl_karten} Karten, {anzahl_werte} Werte<br />
+        ID: {id}</p>
         <p>Beschreibung: {beschreibung}</p>
       </div>
     </div>

@@ -15,17 +15,30 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 7vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1.2vmin);
   color: white;
+}
+
+.App-title {
+  font-size: 2em; /* Adjust size for emphasis */
+  font-weight: bold; /* Makes the text bold */
+  margin: 0;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.item-counter {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 10px 0;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {

@@ -48,7 +48,15 @@ function App() {
 
   return (
     <div>
+      <header className="App-header">
+        <h1 className="App-title">Ste Kwartal Database</h1>
+      </header>
       <FilterBar data={items} filters={filters} setFilters={setFilters} />
+      <div className="item-counter">
+      {filteredItems.length === 1
+    ? `1 Quartett`
+    : `${filteredItems.length} Quartette`}
+      </div>
       <TileGrid items={filteredItems} />
     </div>
   );
